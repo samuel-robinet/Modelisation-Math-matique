@@ -22,4 +22,4 @@ plt.imshow(carres)
 plt.show() # inutile en interactif
 
 # Sauvegarde avec imsave
-mpg.imsave('carres.png', carres)
+mpg.imsave('carres2.png', carres)
