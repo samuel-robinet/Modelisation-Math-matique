@@ -10,21 +10,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpg
 
-# Blanc = np.zeros((50, 50, 3), dtype=np.uint8) #zeros #eyes
+# Blanc = np.zeros((50, 50, 3), dtype=np.uint8) #zeros
 
-R =0* np.ones((100,150), dtype = np.uint8)
-V =0* np.ones((100,150), dtype = np.uint8)
-B =0* np.ones((100,150), dtype = np.uint8)
+R =255* np.ones((100,150,3), dtype = np.uint8)
 
 
-R[0:100,0:50]=255
-V[0:100,0:50]=255
-B[0:100,0:50]=255
+R[0:100,50:150,:]=255
+R[0:100,0:50,:]=[0, 0, 255]
+R[0:100,100:150,:]=[255,0,0]
 
-carres = np.stack((R, V, B), axis =2)
-
-plt.imshow(carres)
+plt.imshow(R)
 
 plt.show()
 
-mpg.imsave('carres.png', carres)
+mpg.imsave('fr.png', R)
