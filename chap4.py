@@ -2,34 +2,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpg
 
-
-
-
-blanc = 255 * np.ones((10, 10), dtype = np.uint8)
-noir =  np.zeros((10, 10), dtype = np.uint8)
-
-
-# On empile les trois matrices
-carreBlanc = np.stack((blanc, blanc, blanc), axis = 2)
-carreNoir = np.stack((noir,noir,noir), axis = 2)
-
-ligne1= np.block([[carreBlanc],[carreNoir]]) 
-ligne1= np.block([[ligne1],[ligne1]])
-ligne1= np.block([[ligne1],[ligne1]])
-
-ligne2= np.block([[carreNoir],[carreBlanc]])
-ligne2= np.block([[ligne2],[ligne2]])
-ligne2= np.block([[ligne2],[ligne2]])
-
-echiquier=np.vstack((ligne1,ligne2))
-echiquier=np.vstack((echiquier,echiquier))
-echiquier=np.vstack((echiquier,echiquier))
-
+R = 255*np.ones((80,80,3), dtype=np.uint8)
+i, j = np.meshgrid(\
+                    np.arange(80, dtype=np.int64),\
+                    np.arange(80, dtype = np.int64),\
+                    indexing = 'ij')
+indB=np.logical_and(i%20<10, j%20<10)
+indJ=np.logical_and(i%20>9, j%20>9)
+R[indJ, :]=[0,0,0]
+R[indB, :]=[0,0,0]
 #print([carres]*carres)
 
 # visualisation avec imshow
-plt.imshow(echiquier)
+plt.imshow(R)
 #plt.show() # inutile en interactif
 #
 # Sauvegarde avec imsave
-mpg.imsave('carres4.png', echiquier)
+
