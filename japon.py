@@ -25,7 +25,7 @@ I, J = np.meshgrid(\
 #
 # Affectation des couleurs en respectant les conditions :
 
-japon[ np.sqrt((500-I)**2+(750-J)**2)<300] = rouge
+japon[ (500-I)**2+(750-J)**2<300**2] = rouge
 
 
 #
